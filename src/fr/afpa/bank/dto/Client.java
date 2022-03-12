@@ -1,7 +1,5 @@
 package fr.afpa.bank.dto;
 
-import fr.afpa.bank.dao.DaoUtils;
-
 import java.util.Date;
 
 public class Client {

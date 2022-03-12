@@ -1,7 +1,7 @@
 package fr.afpa.bank.dto;
 
 
-import fr.afpa.bank.dao.DaoUtils;
+import fr.afpa.bank.dao.Dao;
 
 public class Agence {
 
@@ -27,7 +27,7 @@ public class Agence {
         return code;
     }
     public void setCode() {
-        this.code= DaoUtils.generatedCodeAgence();
+        this.code= Dao.generatedCodeAgence();
     }
 
     public String getNom() {

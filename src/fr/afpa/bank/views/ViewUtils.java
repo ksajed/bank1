@@ -1,5 +1,9 @@
 package fr.afpa.bank.views;
 
+import fr.afpa.bank.controllers.AgenceController;
+import fr.afpa.bank.controllers.ClientController;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ViewUtils {
@@ -41,7 +45,7 @@ public class ViewUtils {
     /**
      * Menu principal avec le switch
      */
-    public static void mainMenuSwitch(){
+    public static void mainMenuSwitch() throws IOException {
 
 
         int choiceentry;
@@ -51,10 +55,13 @@ public class ViewUtils {
             switch (choiceentry)
             {
                 case 1:
-                    System.out.println("menu 1");
+                    AgenceController.createAgence();
                     choiceentry=Integer.parseInt(yourChoice());
                     break;
                 case 2:
+                    ClientController.createClient();
+                    choiceentry=Integer.parseInt(yourChoice());
+                    break;
                 case 4:
                     // ..something else
                     choiceentry=Integer.parseInt(yourChoice());
