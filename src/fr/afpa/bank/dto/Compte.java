@@ -9,24 +9,28 @@ public class Compte {
     private double solde;
     private boolean decouvertAutorise;
     private String typeCompte;
-    private Agence agence;
-    private Client client;
+    private int IdAgence;
+    private String IdClient;
 
-    public Compte(double solde, boolean decouvertAutorise, String typeCompte, Agence agence, Client client) {
+    public Compte() {
+    }
+
+    public Compte(int numero, double solde, boolean decouvertAutorise, String typeCompte, int idAgence, String idClient) {
+        this.numero = numero;
         this.solde = solde;
         this.decouvertAutorise = decouvertAutorise;
         this.typeCompte = typeCompte;
-        this.agence = agence;
-        this.client = client;
-    }
-
-    public Compte() {
+        IdAgence = idAgence;
+        IdClient = idClient;
     }
 
     public int getNumero() {
         return numero;
     }
 
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
 
     public double getSolde() {
         return solde;
@@ -52,20 +56,20 @@ public class Compte {
         this.typeCompte = typeCompte;
     }
 
-    public Agence getAgence() {
-        return agence;
+    public int getIdAgence() {
+        return IdAgence;
     }
 
-    public void setAgence(Agence agence) {
-        this.agence = agence;
+    public void setIdAgence(int idAgence) {
+        IdAgence = idAgence;
     }
 
-    public Client getClient() {
-        return client;
+    public String getIdClient() {
+        return IdClient;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setIdClient(String idClient) {
+        IdClient = idClient;
     }
 
     @Override
@@ -75,8 +79,8 @@ public class Compte {
                 ", solde=" + solde +
                 ", decouvertAutorise=" + decouvertAutorise +
                 ", typeCompte='" + typeCompte + '\'' +
-                ", agence=" + agence +
-                ", client=" + client +
+                ", IdAgence=" + IdAgence +
+                ", IdClient='" + IdClient + '\'' +
                 '}';
     }
 }

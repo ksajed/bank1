@@ -2,6 +2,9 @@ package fr.afpa.bank.views;
 
 import fr.afpa.bank.controllers.AgenceController;
 import fr.afpa.bank.controllers.ClientController;
+import fr.afpa.bank.controllers.CompteController;
+import fr.afpa.bank.dao.AgenceDao;
+import fr.afpa.bank.dao.DaoClient;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -62,11 +65,11 @@ public class ViewUtils {
                     ClientController.createClient();
                     choiceentry=Integer.parseInt(yourChoice());
                     break;
-                case 4:
-                    // ..something else
+                case 3:
+                   CompteController.createClient();
                     choiceentry=Integer.parseInt(yourChoice());
                     break;
-                case 3:
+                case 31:
                     // ..something else
                     choiceentry=Integer.parseInt(yourChoice());
                     break;

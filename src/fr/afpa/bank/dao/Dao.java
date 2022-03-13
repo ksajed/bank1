@@ -83,4 +83,14 @@ public class Dao {
 
         return randomUpperCaseString;
     }
+
+    public static String generatedCodeCompte() {
+        //11 digit
+        String a = Integer.toString(random.nextInt(9));
+        for (int i = 0; i < 10; i++) {
+            a = a + Integer.toString(random.nextInt(9));
+        }
+
+        return a;
+    }
 }

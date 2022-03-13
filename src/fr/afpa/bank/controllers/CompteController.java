@@ -1,25 +1,27 @@
 package fr.afpa.bank.controllers;
 
 import fr.afpa.bank.dao.AgenceDao;
+import fr.afpa.bank.dao.CompteDao;
 import fr.afpa.bank.dao.Dao;
-import fr.afpa.bank.views.AgenceView;
 import fr.afpa.bank.views.ClientView;
+import fr.afpa.bank.views.CompteView;
 
 import java.io.IOException;
 
-public class ClientController {
+public class CompteController {
 
-    AgenceDao agenceDao = new AgenceDao();
-    static ClientView clientView = new ClientView();
+
+    CompteDao CompteDao = new CompteDao();
+    static CompteView compteView = new CompteView();
 
     /**
      * recuperer les informations de client a creer aprtir de la vue "Clientview"
      * appel de la fonction writeToFile de la class "Dao" pour l'ecriture sur le fichier
      */
     public static void createClient() throws IOException {
-        String listCreatedClient = clientView.createClientView();
-        String fileName = "Files/Client.csv";
+        String listCreatedCompte = compteView.createCompteView();
+        String fileName = "Files/Compte.csv";
 
-        Dao.writeToFile(fileName, listCreatedClient);
+        Dao.writeToFile(fileName, listCreatedCompte);
     }
 }
