@@ -83,6 +83,12 @@ public class ViewUtils {
                     ClientView.searchClientByNumCompte();
                     choiceentry=Integer.parseInt(yourChoice());
                     break;
+                case 7://Imprimer les infos client (identifiant client)
+                    System.out.println("Entrer le Client id(Afficher les infos client) :");
+
+                    ClientView.showClientByeIdClient(scanner.nextLine());
+                    choiceentry=Integer.parseInt(yourChoice());
+                    break;
                 default:
                     System.out.println("Choice must be a value between 1 and 14.");
             }
