@@ -4,6 +4,7 @@ import fr.afpa.bank.controllers.AgenceController;
 import fr.afpa.bank.controllers.ClientController;
 import fr.afpa.bank.controllers.CompteController;
 import fr.afpa.bank.dao.AgenceDao;
+import fr.afpa.bank.dao.CompteDao;
 import fr.afpa.bank.dao.DaoClient;
 
 import java.io.IOException;
@@ -66,15 +67,20 @@ public class ViewUtils {
                     choiceentry=Integer.parseInt(yourChoice());
                     break;
                 case 3:
-                   CompteController.createClient();
+                   CompteController.createCompte();
                     choiceentry=Integer.parseInt(yourChoice());
                     break;
-                case 31:
-                    // ..something else
+                case 4:
+                    System.out.println("Num de compte :");
+                    System.out.println( CompteDao.searchAccountByAccountNumber(scanner.nextLine()));
                     choiceentry=Integer.parseInt(yourChoice());
                     break;
                 case 5:
-                    // ..something else
+                    ClientView.searchClientByCriteria();
+                    choiceentry=Integer.parseInt(yourChoice());
+                    break;
+                case 6:
+                    ClientView.searchClientByNumCompte();
                     choiceentry=Integer.parseInt(yourChoice());
                     break;
                 default:

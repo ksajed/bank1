@@ -18,7 +18,7 @@ public class CompteController {
      * recuperer les informations de client a creer aprtir de la vue "Clientview"
      * appel de la fonction writeToFile de la class "Dao" pour l'ecriture sur le fichier
      */
-    public static void createClient() throws IOException {
+    public static void createCompte() throws IOException {
         String listCreatedCompte = compteView.createCompteView();
         String fileName = "Files/Compte.csv";
 
