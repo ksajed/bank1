@@ -19,9 +19,13 @@ public class CompteController {
      * appel de la fonction writeToFile de la class "Dao" pour l'ecriture sur le fichier
      */
     public static void createCompte() throws IOException {
-        String listCreatedCompte = compteView.createCompteView();
-        String fileName = "Files/Compte.csv";
 
-        Dao.writeToFile(fileName, listCreatedCompte);
+        String listCreatedCompte = compteView.createCompteView();
+        if(listCreatedCompte!=null){
+               String fileName = "Files/Compte.csv";
+               Dao.writeToFile(fileName, listCreatedCompte);
+            System.out.println("Account Created Successfully...");
+        }
+        else System.out.println("il ne peut avoir plus que 3 comptes!!");
     }
 }

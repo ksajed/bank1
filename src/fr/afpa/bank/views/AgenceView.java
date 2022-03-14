@@ -30,4 +30,14 @@ public class AgenceView {
 
 
     }
-}
+
+    public static void showAllAgency() {
+        List<String> listAgence = Dao.readFile("Files/Agence.csv");
+                    for (String agence: listAgence) {
+                           System.out.println("» "+agence);
+                    }
+
+    }
+
+    }
+

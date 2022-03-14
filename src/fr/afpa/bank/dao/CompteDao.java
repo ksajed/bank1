@@ -28,11 +28,13 @@ public class CompteDao {
 
             for (String compte: listCompte) {
                 String[] values=compte.split(";");
-                if(values[0].compareTo(strNumCompte.trim())==0) listIdClientfinded.add(values[5]);
+                if(values[5].compareTo(strNumCompte.trim())==0) listIdClientfinded.add(compte);
             }
             return listIdClientfinded;
 
 
         }
-    }
+
+
+}
 

@@ -15,20 +15,24 @@ import java.util.Scanner;
 public class ClientView {
     static Scanner scanner = new Scanner(System.in);
 
+    public static void showAllClient() {
+        List<String> listClient= Dao.readFile("Files/Client.csv");
+                for (String client: listClient) {
+                     System.out.println("» "+client);
+                }
+    }
 
     public static void showClientByeIdClient(String idClient) throws IOException {
         List<String> listClient = DaoClient.searchClientById(idClient);
         String[] values=listClient.get(0).split(";");
 
-
-
         System.out.format("%10s%15s%16s%27s%16s", "ID", "Nom", "Prenom","Date de naissance","Email");
         System.out.println("");
         System.out.format("%10s%15s%16s%27s%16s", values[0], values[1], values[2],values[3],values[4]);
 
-
-
     }
+
+
 
     /**
      * formulaire de saisie client

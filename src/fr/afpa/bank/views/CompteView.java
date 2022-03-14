@@ -1,6 +1,7 @@
 package fr.afpa.bank.views;
 
 import fr.afpa.bank.dao.AgenceDao;
+import fr.afpa.bank.dao.CompteDao;
 import fr.afpa.bank.dao.Dao;
 import fr.afpa.bank.dao.DaoClient;
 
@@ -10,6 +11,13 @@ import java.util.Scanner;
 
 public class CompteView {
     Scanner scanner=new Scanner(System.in);
+
+    public static void showAllCompte() {
+        List<String> listCompte= Dao.readFile("Files/Compte.csv");
+                for (String compte: listCompte) {
+                    System.out.println("» "+compte);
+                }
+    }
 
     /**
      * formulaire de saisie Compte
@@ -38,7 +46,13 @@ public class CompteView {
 
         System.out.println("Veuillez choisir un Id Client de la liste :");
         DaoClient.showAll();
-        clientAttributes += scanner.nextLine()+";";
+        String idClient=scanner.nextLine();
+        List<String> listCompte = CompteDao.searchClientById(idClient);
+        System.out.println("nb compte :"+listCompte.size());
+        if(listCompte.size()<3)    clientAttributes += idClient+";";
+        else {
+            clientAttributes=null;
+                   }
 
         return clientAttributes;
     }
