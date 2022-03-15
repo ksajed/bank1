@@ -6,8 +6,11 @@ import fr.afpa.bank.views.ClientView;
 import fr.afpa.bank.views.ViewUtils;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class AgenceDao {
     static Scanner scanner=new Scanner(System.in);
@@ -78,4 +81,50 @@ public class AgenceDao {
         }
         return result;
     }
+    //code,nom, adressePostale, codePostal, ville
+    public static void updateAdress() throws IOException {
+        AgenceView.showAllAgency();
+
+        String fileName = "Files/Agence.csv";
+
+        System.out.println("Entrer Id agence: ");
+        String idAgence=scanner.nextLine().trim();
+
+        System.out.println("Entre votre la nouvelle adresse de l'agence:");
+        String newValueAdress= scanner.nextLine().trim();
+
+        List<String> listAgence = Dao.readFile(fileName);
+        String agenceFinded=null;
+        String[] values=null;
+        List<String> listAgenceLine=new ArrayList<>();
+
+               for (String agence:listAgence) {
+                        values=agence.split(",");
+                         listAgenceLine= Arrays.asList(values);
+                         if(listAgenceLine.get(0).equals(idAgence)) agenceFinded=agence;
+               }
+
+        System.out.println("agence finded "+agenceFinded);
+        String[] stringAgence=null;
+        if(agenceFinded!=null) {
+                     listAgence.remove(agenceFinded);
+                     stringAgence = agenceFinded.split(",");
+             }else System.out.println("Agence file not found!!");
+
+
+        //modifier l'agence
+        stringAgence[2]=newValueAdress;
+        String medifiedAgence=toCSV(stringAgence);
+        listAgence.add(medifiedAgence);
+        System.out.println(listAgence);
+
+
+        Dao.writeToFileNotAppend(fileName, listAgence.get(0));
+        //writeToFile(String fileName,String textToWrite)
+        for (int i=1;i< listAgence.size();i++) {
+            if(listAgence.get(i)!=""){
+                Dao.writeToFile(fileName, listAgence.get(i));
+            }
+    }
+}
 }
