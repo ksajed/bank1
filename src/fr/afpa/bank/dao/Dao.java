@@ -1,6 +1,7 @@
 package fr.afpa.bank.dao;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -12,22 +13,41 @@ import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Dao {
-    static Random random=new Random();
+    static Random random = new Random();
+    static  Scanner scanner=new Scanner(System.in);
+
     /**
      * append csv file
+     *
      * @param fileName
      * @param textToWrite
      */
-    public static void writeToFile(String fileName,String textToWrite) throws IOException {
+    public static void writeToFile(String fileName, String textToWrite) throws IOException {
         Path p = Paths.get(fileName);
-        String s =System.lineSeparator()+textToWrite;//write line separator first
+        String s = System.lineSeparator() + textToWrite;//write line separator first
 
         try (BufferedWriter writer = Files.newBufferedWriter(p, StandardOpenOption.APPEND)) {
             writer.write(s);
         } catch (IOException ioe) {
             System.err.format("IOException: %s%n", ioe);
         }
+        System.out.println("Appended data successfully...");
     }
+//
+
+    public static void writeToFileNotAppend(String fileName, String textToWrite){
+        try {
+            FileWriter myWriter = new FileWriter(fileName);
+            myWriter.write(textToWrite);
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+}
+
 
     /**
      *
@@ -93,4 +113,5 @@ public class Dao {
 
         return a;
     }
+
 }
